@@ -1,10 +1,49 @@
 
 <html>
   <head>
-    <title>This is test site</title>
+    <title>Index Page</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css'/>
   </head>
 <body>
+<input type="text" class="form-control" id="userInput" placeholder="Input value here">
+<input type="button" onclick="fibonacci()" value="iterative fibonacci sequence upto n number">
+<input type="button" onclick="fibonacci()" value="recursive fibonacci sequence upto n number">
+<input type="button" onclick="factorial()" value="iterative factorial">
+<input type="button" onclick="factorial()" value="recursive factorial">
+<input type="button" onclick="palindrome()" value="palindrome">
+<div id="output">
 
-this is test file
+</div>
+<script>
+  const [input,output]=document.querySelectorAll("#userInput,#output");
+function fibonacci(){
+  let fibNums=[0,1];
+  for(let i=2;fibNums[i-1]<input.value;i++){
+    nextNum=fibNums[i-1]+fibNums[i-2];
+    if(nextNum<input.value) {
+      fibNums.push(nextNum);
+    }
+  }
+output.innerHTML=`<div>${fibNums}</div>`;
+}
+function factorial(){
+  let userInput=input.value,factorialResult=1;
+ while(userInput>0){
+   factorialResult=factorialResult*userInput;
+   userInput--;
+ }
+output.innerHTML=`<div>${factorialResult}</div>`;
+}
+
+function palindrome(){
+  if(input.value===input.value.split("").reverse().join("")){
+    output.innerHTML=`<div>given string is palindrome</div>`;
+  }
+  else{
+    output.innerHTML=`<div>String is Not Palindrome</div>`;
+  }
+}
+
+</script>
 </body>
 </html>
