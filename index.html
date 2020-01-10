@@ -4,13 +4,23 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css'/>
   </head>
 <body>
-<input type="text" class="form-control" id="userInput" placeholder="Input value here">
-<input type="button" onclick="fibonacci()" value="iterative fibonacci sequence upto n number">
-<input type="button" onclick="rfibonacci()" value="recursive fibonacci sequence upto n number">
-<input type="button" onclick="factorial()" value="iterative factorial">
-<input type="button" onclick="factorial()" value="recursive factorial">
-<input type="button" onclick="palindrome()" value="palindrome">
-<div id="output">
+  <h2 class="text-center">Click on <span class="text-danger">Buttons</span> to Check Output of Respective Functions</h2>
+
+  
+<input type="text" class="form-control col-6 mx-auto"  id="userInput" placeholder="Input value here">
+<div class="d-flex flex-column justify-content-center mt-3">
+<input type="button" class="btn col-4 btn-info mx-auto m-1 text-capitalize" onclick="fibonacci()" value="iterative fibonacci sequence upto n number">
+<input type="button" class="btn col-4 btn-info mx-auto m-1 text-capitalize" onclick="rfibonacci()" value="recursive fibonacci sequence upto n number">
+<input type="button" class="btn col-4 btn-info mx-auto m-1 text-capitalize" onclick="factorial()" value="iterative factorial">
+<input type="button" class="btn col-4 btn-info mx-auto m-1 text-capitalize" onclick="rfactorial()" value="recursive factorial">
+<input type="button" class="btn col-4 btn-info mx-auto m-1 text-capitalize" onclick="palindrome()" value="palindrome">
+</div>
+<div  class="container-fluid col-8 text-center bg-grey mt-4">
+  <span class="h3">Output:</span><br>
+  <div id="output" class="border-top border-bottom border-dark mx-auto text-center" style="min-height: 50px;font-size:45px;">
+
+  </div>
+</div>
 </div>
 <script>
   const [input,output]=document.querySelectorAll("#userInput,#output");
