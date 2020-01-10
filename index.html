@@ -23,7 +23,10 @@
 </div>
 </div>
 <script>
+  //Selecting DOM Nodes
   const [input,output]=document.querySelectorAll("#userInput,#output");
+  
+  //fibonacci sequence iterative 
 function fibonacci(){
   let fibNums=[0,1];
   for(let i=2;fibNums[i-1]<input.value;i++){
@@ -37,6 +40,8 @@ output.innerHTML=`<div>${fibNums}</div>`;
 function rfibonacci(){
 output.innerHTML=`<div>${recursiveFibonacci(input.value)}</div>`;
 }
+
+//fibonacci sequence recursive
 function recursiveFibonacci(value){
   if (value===1) 
   {
@@ -44,7 +49,7 @@ function recursiveFibonacci(value){
   } 
   else 
   {
-    let arr = recursiveFibonacci(value - 1);
+    const arr = recursiveFibonacci(value - 1);
     nextNum=arr[arr.length - 1] + arr[arr.length - 2]
     if(nextNum<=input.value){
     arr.push(nextNum);
@@ -52,6 +57,8 @@ function recursiveFibonacci(value){
     return arr;
 }
 }
+
+//factorial method iterative
 function factorial(){
   let userInput=input.value,factorialResult=1;
  while(userInput>0){
@@ -63,6 +70,8 @@ output.innerHTML=`<div>${factorialResult}</div>`;
 function rfactorial(){
 output.innerHTML=`<div>${recursiveFactorial(input.value)}</div>`;
 }
+
+//factorial method recursive
 function recursiveFactorial(value){
   if(value==0) return;
 if(value==1){
@@ -70,6 +79,9 @@ if(value==1){
 }
 return value*recursiveFactorial(value-1);
 }
+
+
+//palindrome
 function palindrome(){
   if(input.value===input.value.split("").reverse().join("")){
     output.innerHTML=`<div>given string is palindrome</div>`;
