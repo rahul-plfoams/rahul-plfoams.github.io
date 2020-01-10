@@ -1,4 +1,3 @@
-
 <html>
   <head>
     <title>Index Page</title>
@@ -7,12 +6,11 @@
 <body>
 <input type="text" class="form-control" id="userInput" placeholder="Input value here">
 <input type="button" onclick="fibonacci()" value="iterative fibonacci sequence upto n number">
-<input type="button" onclick="fibonacci()" value="recursive fibonacci sequence upto n number">
+<input type="button" onclick="rfibonacci()" value="recursive fibonacci sequence upto n number">
 <input type="button" onclick="factorial()" value="iterative factorial">
 <input type="button" onclick="factorial()" value="recursive factorial">
 <input type="button" onclick="palindrome()" value="palindrome">
 <div id="output">
-
 </div>
 <script>
   const [input,output]=document.querySelectorAll("#userInput,#output");
@@ -20,11 +18,29 @@ function fibonacci(){
   let fibNums=[0,1];
   for(let i=2;fibNums[i-1]<input.value;i++){
     nextNum=fibNums[i-1]+fibNums[i-2];
-    if(nextNum<input.value) {
+    if(nextNum<=input.value) {
       fibNums.push(nextNum);
     }
   }
 output.innerHTML=`<div>${fibNums}</div>`;
+}
+function rfibonacci(){
+output.innerHTML=`<div>${recursiveFibonacci(input.value)}</div>`;
+}
+function recursiveFibonacci(value){
+  if (value===1) 
+  {
+    return [0, 1];
+  } 
+  else 
+  {
+    let arr = recursiveFibonacci(value - 1);
+    nextNum=arr[arr.length - 1] + arr[arr.length - 2]
+    if(nextNum<=input.value){
+    arr.push(nextNum);
+    };
+    return arr;
+}
 }
 function factorial(){
   let userInput=input.value,factorialResult=1;
@@ -34,7 +50,16 @@ function factorial(){
  }
 output.innerHTML=`<div>${factorialResult}</div>`;
 }
-
+function rfactorial(){
+output.innerHTML=`<div>${recursiveFactorial(input.value)}</div>`;
+}
+function recursiveFactorial(value){
+  if(value==0) return;
+if(value==1){
+  return 1;
+}
+return value*recursiveFactorial(value-1);
+}
 function palindrome(){
   if(input.value===input.value.split("").reverse().join("")){
     output.innerHTML=`<div>given string is palindrome</div>`;
@@ -43,7 +68,6 @@ function palindrome(){
     output.innerHTML=`<div>String is Not Palindrome</div>`;
   }
 }
-
 </script>
 </body>
 </html>
