@@ -1,4 +1,5 @@
 <?php
+ session_start();
 include "database.php";
 $sql = "CREATE TABLE users (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -15,7 +16,7 @@ if(isset($_POST['register'])){
     $password=$_POST['password'];
 $sql="INSERT INTO users(name,email,password) VALUES('$name','$email','$password')";
 if($db->query($sql)){
-    session_start();
+   
     $_SESSION["alert"]="Registered Successfully";
     header("location:index.php");
 }
@@ -27,17 +28,16 @@ if(isset($_POST['login'])){
     $email=$_POST['username'];
     $password=$_POST['password'];
     $sql="SELECT * FROM users WHERE(email='$email' AND password='$password')";
-    if($db->query($sql)){
-        session_start();
+    if($db->query($sql)->num_rows===0){
+$_SESSION["alert"]="Login or password wrong";
+        header("location:index.php");
+    }
+    else{
+        
         echo "Login successfull";
         $_SESSION["isLogin"]=true;
         $_SESSION["userdata"]=$db->query($sql)->fetch_assoc();
-        echo "<pre>";
-print_r($_SESSION["userdata"]);
         header("location:dashboard.php");
-    }
-    else{
-        echo mysqli_error($db->connection);
     }
 }
 ?>
